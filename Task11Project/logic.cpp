@@ -6,19 +6,25 @@
 
 #include "logic.h"
 
-double recursion(int vector[], int size) {
-    
-    if (size < 0) {
+double avg(int vector[], int size) {
+    double sum = sum_recirsion(vector, size);
+
+    return sum / size;
+}
+
+int sum_recirsion(int vector[], int size) {
+
+    if (size <= 0) {
         return 0;
     }
 
-    return vector[size] + recursion(vector, size - 1);
+    return vector[size - 1] + sum_recirsion(vector, size - 1);
 }
 
 double calculate_average(int vector[], int size) {
     if (size <= 0) {
-        return -1; 
+        return -1;
     }
 
-    return recursion(vector, size - 1) / size;
+    return avg(vector, size);
 }
